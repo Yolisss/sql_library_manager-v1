@@ -11,7 +11,7 @@ router.get("/", function (req, res, next) {
       const books = await Book.findAll({
         attributes: ['title', 'author', 'genre', 'year'],
         return res.json(books);
-        console.log(json); 
+        console.log(res.json()); 
   })
     } catch(error){
       console.log(error)
