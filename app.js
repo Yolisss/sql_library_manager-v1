@@ -41,7 +41,7 @@ app.use(function (err, req, res, next) {
 });
 
 (async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync();
   console.log("All models were synchronized successfully.");
 
   try {
