@@ -6,6 +6,8 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var booksRouter = require("./routes/books");
+const book = require("./models/book");
 
 const sequelize = require("./models/index").sequelize;
 
@@ -19,14 +21,20 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+//Number 7?
+//Q for vlad
+//if we're trying to render 'page-not-found' template why
+//not call "example-markup" folder instead of public?
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/books", booksRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
+  console.log("toast");
 });
 
 // error handler

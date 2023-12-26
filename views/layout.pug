@@ -4,4 +4,16 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    h1 Books
+      p 
+        a(class="button" href="new_book.html") Create New Book 
+
+    table
+      thread 
+        tr 
+          th #{Title} 
+          th #{Author} 
+          th #{Genre} 
+          th #{Year} 
+    
     block content

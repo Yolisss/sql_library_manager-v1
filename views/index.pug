@@ -3,3 +3,11 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  each book in books 
+    .cell 
+      a(href=`/book/${book.id}`)
+        h3 #{book.title}
+        h5 #{book.author}
+        h5 #{book.genre} 
+        h5 #{book.year}
