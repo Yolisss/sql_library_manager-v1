@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 var { Book } = require("../models");
+var createError = require("http-errors");
 
 router.get("/", async function (req, res, next) {
   //any changes made to book module in code,
@@ -29,6 +30,7 @@ router.post("/new", async function (req, res, next) {
   //when db builds and saves new book record, app should redirect to new book
   //autoincrement is in place for id
   res.redirect("/books/" + book.id);
+  //res.render("index", { books });
 });
 router.get("/:id", async function (req, res, next) {
   //using SQL's findByPk method
@@ -38,13 +40,24 @@ router.get("/:id", async function (req, res, next) {
   //in express rroutes, you use route params to capture values specified
   //in the URL path (req.params)
   const book = await Book.findByPk(req.params.id);
-  res.render("/new");
+  if (book === null) {
+    res.status(404);
+    res.render("page-not-found");
+    console.log("book is null");
+  } else {
+    res.render("update-book", { book });
+  }
 });
+
 router.post("/:id", async function (req, res, next) {
-  //nothing yet
+  const book = await Book.findByPk(req.params.id);
+  await book.update(req.body);
+  res.redirect("/books/" + book.id);
 });
 router.post("/:id/delete", async function (req, res, next) {
-  //nothing yet
+  const book = await Book.findByPk(req.params.id);
+  await book.destroy();
+  res.redirect("/");
 });
 
 module.exports = router;
