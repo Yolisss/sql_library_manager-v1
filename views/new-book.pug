@@ -6,21 +6,26 @@ html
   body
     h1 New Book
       form(method="post" action="/books/new")
-        p
+         if errors
+            h2.error Oops!
+            ul
+               each error in errors
+                  li #{error.message}
+         p
            label(for="title") Title
            input(name="title" type="text" id="title")
-        p
+         p
            label(for="author") Author
            input(name="author" type="text" id="author") 
-        p
+         p
            label(for="genre") Genre 
            input(name="genre" type="text" id="genre") 
-        p
+         p
            label(for="year") Year
            input(name="year" type="text" id="year")
-        p   
+         p   
             input(type="submit" value="Create New Book")
-        p
+         p
             a(class="button" href="/") Cancel    
     
     //- block content
