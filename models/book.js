@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
   class Book extends Model {
     /**
@@ -21,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             mgs: "Please provide a value for 'title'",
           },
           notEmpty: {
-            msg: "Please provide a value for 'title'",
+            msg: "'Title' is required",
           },
         },
       },
@@ -33,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
             mgs: "Please provide a value for 'author'",
           },
           notEmpty: {
-            msg: "Please provide a value for 'author'",
+            msg: "'Author' is required",
           },
         },
       },
