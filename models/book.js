@@ -40,7 +40,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       genre: {
         type: DataTypes.STRING,
-        year: DataTypes.INTEGER,
+      },
+      year: {
+        type: DataTypes.INTEGER,
       },
     },
     {

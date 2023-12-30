@@ -28,10 +28,10 @@ router.post("/new", async function (req, res, next) {
     book = await Book.create(req.body);
     res.redirect("/books/" + book.id);
   } catch (error) {
-    throw error;
+    //throw error;
     if (error.name === "SequelizeValidationError") {
       book = await Book.build(req.body);
-      res.render("new-book", {
+      res.render("form-error", {
         book,
         errors: error.errors,
         title: "New Book",
@@ -42,34 +42,6 @@ router.post("/new", async function (req, res, next) {
   }
 });
 
-//from my post route
-// //1.create is an async call that returns a promise
-//   //and inside the async func, you use await key to wait for a promise
-//   //create reqs an obj with props that map the model attributes
-//   let book;
-//   book = await Book.create(req.body);
-//   if (book.title === null || book.author === null) {
-//     res.redirect("/books/" + book.id);
-//   } else {
-//     //when db builds and saves new book record, app should redirect to new book
-//     //autoincrement is in place for id
-//     res.render("error");
-//     //res.render("index", { books });
-//   }
-//end of post route
-
-// let book;
-// book = await Book.create(req.body);
-// try {
-//   res.redirect("/books/" + book.id);
-// } catch (error) {
-//   if (error.name === "SequelizeValidationError") {
-//     book = await Book.build(req.body);
-//     res.render("/new", { book, errors: error.errors, title: "New Book" });
-//   } else {
-//     throw error;
-//   }
-// }
 router.get("/:id", async function (req, res, next) {
   //using SQL's findByPk method
   //FindByPk is an async call that returns a promise whose resolved
