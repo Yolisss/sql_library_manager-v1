@@ -12,7 +12,7 @@ router.get("/", async function (req, res, next) {
   const books = await Book.findAll();
   console.log(books);
   //ref index.pug => template; books as variable
-  res.render("index", { books });
+  res.render("index", { books, title: "Books" });
 });
 
 router.get("/new", async function (req, res, next) {

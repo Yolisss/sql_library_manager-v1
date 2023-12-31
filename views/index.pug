@@ -1,31 +1,23 @@
 extends layout
 
 block content
-  h1= title
+  h1 Books
   p Welcome to #{title}
-
-  each book in books 
-    .cell 
-      a(href=`/books/${book.id}`)
-        h3 #{book.title}
-        h5 #{book.author}
-        h5 #{book.genre} 
-        h5 #{book.year}
-
-
-
-//- html 
-//-   head
-//-     style 
-//-       link(rel="stylesheet" href="style.css")
-//-   body 
-//-     h1= title
-//-     p Welcome to #{title}
-
-//-     each book in books 
-//-       .cell 
-//-         a(href=`/books/${book.id}`)
-//-           h3 #{book.title}
-//-           h5 #{book.author}
-//-           h5 #{book.genre} 
-//-           h5 #{book.year}
+    a.button(class="button" href="/books/new") Create New Book
+    
+  table
+    thead
+      tr
+        th Title
+        th Author
+        th Genre
+        th Year
+    tbody
+      each book in books 
+        book
+        tr
+          td
+            a(href=`/books/${book.id}`)= book.title
+          td= book.author 
+          td= book.genre 
+          td= book.year

@@ -7,7 +7,7 @@ block content
             h2.error Oops!
             ul
                each error in errors
-                  li #{error.message}
+                  h5.li.error #{error.message}
          p
            label(for="title") Title
            input(name="title" type="text" id="title")

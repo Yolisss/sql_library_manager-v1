@@ -1,15 +1,7 @@
-extends layout 
-
-block content 
-
-    h1 Books
-      p 
-        a(class="button" href="/books/new") Create New Book 
-
-    table
-      thread 
-        tr 
-          th #{Title} 
-          th #{Author} 
-          th #{Genre} 
-          th #{Year} 
+doctype html
+html
+  head
+    title= title
+    link(href="/stylesheets/style.css", rel='stylesheet')
+  body
+  block content
