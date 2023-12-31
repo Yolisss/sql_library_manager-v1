@@ -10,7 +10,7 @@ router.get("/", async function (req, res, next) {
   //those changes
   // await db.sequelize.sync({ force: true });
   const books = await Book.findAll();
-  console.log(books);
+  //console.log(books);
   //ref index.pug => template; books as variable
   res.render("index", { books, title: "Books" });
 });
@@ -53,7 +53,7 @@ router.get("/:id", async function (req, res, next) {
   if (book === null) {
     res.status(404);
     res.render("page-not-found");
-    console.log("book is null");
+    //console.log("book is null");
   } else {
     res.render("update-book", { book });
   }
@@ -86,8 +86,12 @@ router.post("/:id", async function (req, res, next) {
 
 router.post("/:id/delete", async function (req, res, next) {
   const book = await Book.findByPk(req.params.id);
-  await book.destroy();
-  res.redirect("/");
+  if (book) {
+    await book.destroy();
+    res.redirect("/");
+  } else {
+    res.sendStatus(404);
+  }
 });
 
 module.exports = router;
