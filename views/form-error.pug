@@ -1,7 +1,7 @@
 extends layout 
 
 block content
-    h1 New Book
+    h1 #{title}
       form(method="post" action="/books/new")
          if errors
             h2.error Oops!
@@ -10,17 +10,17 @@ block content
                   h5.li.error #{error.message}
          p
            label(for="title") Title
-           input(name="title" type="text" id="title")
+           input(name="title"  value=`${book.title}` type="text" id="title")
          p
            label(for="author") Author
-           input(name="author" type="text" id="author") 
+           input(name="author"  value=`${book.author}` type="text" id="author") 
          p
            label(for="genre") Genre 
-           input(name="genre" type="text" id="genre") 
+           input(name="genre"  value=`${book.genre}` type="text" id="genre") 
          p
            label(for="year") Year
-           input(name="year" type="text" id="year")
+           input(name="year"  value=`${book.year}` type="text" id="year")
          p   
-            input(type="submit" value="Create New Book")
+            input(type="submit" value=`${book.title}`)
          p
             a(class="button" href="/") Cancel    
