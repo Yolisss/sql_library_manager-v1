@@ -1,9 +1,6 @@
-doctype html
-html
-  head
-    title 
-    link(rel='stylesheet' href='../public/stylesheets/style.css')
-  body
+extends layout 
+
+block content
     h1 New Book
       form(method="post" action="/books/new")
          if errors
